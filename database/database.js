@@ -1,4 +1,5 @@
 const { createPool } = require('mysql');
+
 const pool = createPool({
     host: "localhost",
     user: "root",
@@ -6,9 +7,10 @@ const pool = createPool({
     database: "bartertrype",
     connectionLimit: 10
 });
-pool.query(`select * from user`, function(err, result, fields) {
+pool.query(`select * from users`, function(err, result, fields) {
     if (err) {
         return console.log(err);
     }
     return console.log(result);
-})
+});
+module.exports = { pool };
